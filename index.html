@@ -181,13 +181,11 @@ cnt();
 $("mb").onclick=function(){$("m").className=""};
 for(var k=0;k<12;k++){var h=document.createElement("div");h.className="h";h.textContent="♥";h.style.cssText="left:"+(k*8+2)+"%;font-size:"+(14+k%4*6)+"px;animation-duration:"+(12+k%5*4)+"s;animation-delay:-"+k*3+"s";document.body.appendChild(h)}
 var H="c250791eb919cb77c93a8e7f99358b60cce5ce2940bedddae0e886b407a9a951",ok=false;
-try{ok=sessionStorage.getItem("dk")=="1"}catch(e){}
 function unlock(){$("g").className="out";document.body.classList.remove("lock");window.scrollTo(0,0);setTimeout(function(){$("g").style.display="none"},900)}
-if(ok)unlock();
 function chk(){var v=$("k").value.replace(/\D/g,"");
 crypto.subtle.digest("SHA-256",new TextEncoder().encode(v)).then(function(b){
 var x=Array.from(new Uint8Array(b)).map(function(n){return("0"+n.toString(16)).slice(-2)}).join("");
-if(x==H){try{sessionStorage.setItem("dk","1")}catch(e){}unlock()}
+if(x==H){unlock()}
 else{$("ge").textContent="Esa no es, mi amor. Intenta otra vez 💗";var c=document.querySelector(".gc");c.classList.remove("sk");void c.offsetWidth;c.classList.add("sk");$("k").value=""}})}
 $("gb").onclick=chk;$("k").onkeydown=function(e){if(e.key=="Enter")chk()};
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
