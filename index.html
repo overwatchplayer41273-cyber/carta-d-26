@@ -58,12 +58,12 @@ h2:after{content:"";display:block;width:56px;height:2px;margin:12px auto 0;backg
 .rv{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.h{display:none}.rv{opacity:1;transform:none;transition:none}}
 body.lock{overflow:hidden;height:100%}body.lock section{visibility:hidden}
-#g{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:24px;background:linear-gradient(180deg,var(--bg1),var(--bg2));transition:opacity .8s}
+#g{position:fixed;inset:0;z-index:30;display:flex;overflow:auto;padding:24px;background:linear-gradient(180deg,var(--bg1),var(--bg2));transition:opacity .8s}
 #g.out{opacity:0;pointer-events:none}
-#g .gc{background:var(--card);border-radius:30px;padding:34px 26px;max-width:340px;width:100%;text-align:center;box-shadow:0 18px 44px var(--sh);border:1px solid #f4b9c455}
+#g .gc{margin:auto;background:var(--card);border-radius:30px;padding:34px 26px;max-width:340px;width:100%;text-align:center;box-shadow:0 18px 44px var(--sh);border:1px solid #f4b9c455}
 #g .gc>div{font-size:46px}
 #g h1{font-size:54px;margin:4px 0 6px}
-#g p{margin:0 0 16px;font:italic 500 16px/1.5 "Playfair Display",serif;color:var(--plum)}
+#g p{margin:0 0 16px;font:italic 500 15px/1.55 "Playfair Display",serif;color:var(--plum)}
 #k{width:100%;border:2px solid var(--rose);border-radius:16px;background:var(--soft);color:var(--plum);font:600 28px Nunito,sans-serif;letter-spacing:.35em;text-align:center;padding:10px 6px;outline:0}
 #gb{margin-top:14px;background:var(--pink);color:#fff;border:0;border-radius:99px;padding:10px 32px;font:700 15px Nunito,sans-serif}
 #ge{min-height:22px;margin-top:12px;font:500 20px Caveat,cursive;color:var(--plum)}
@@ -71,7 +71,7 @@ body.lock{overflow:hidden;height:100%}body.lock section{visibility:hidden}
 </style>
 </head>
 <body class="lock">
-<div id="g"><div class="gc"><div>🔒</div><h1>Para Daniela</h1><p>Escribe la clave para abrir tu carta.<br>Pista: el día en que empezó todo 💗</p><input id="k" type="password" inputmode="numeric" maxlength="6" placeholder="······" autocomplete="off" aria-label="Clave"><br><button id="gb">Abrir 💌</button><div id="ge"></div></div></div>
+<div id="g"><div class="gc"><div>🔒</div><h1>Para Daniela</h1><p>Para abrir tu carta, resuelve el acertijo:<br><br>Los puntos cardinales marcan mi día.<br>Las estaciones del año, mi mes.<br>Pero ninguno sale solo de casa:<br>un cero los acompaña por delante, como en el calendario.<br>Mi año empieza con tu edad de hoy<br>y termina con las caras de un dado.<br>Júntalos sin guiones ni espacios:<br>seis números donde empezó nuestra historia. 💗</p><input id="k" type="password" inputmode="numeric" maxlength="6" placeholder="······" autocomplete="off" aria-label="Clave"><br><button id="gb">Abrir 💌</button><div id="ge"></div></div></div>
 <section>
   <div style="font-size:44px">🎀</div>
   <h1>Feliz cumpleaños,<br>Daniela</h1>
