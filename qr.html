@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Llave de corazón 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@500;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#fff1f3;--bg2:#fbd6e0;--card:#fffaf6;--ink:#5a3a46;--plum:#8a3f5e;--rose:#e98a9b;--pink:#f07fa0;--soft:#fdebe6;--sh:#c8607030;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#2c1722;--bg2:#1f0f18;--card:#3a2230;--ink:#f7dfe6;--plum:#f4a9c0;--soft:#4a2b3a;--sh:#00000055}}
+:root[data-theme="dark"]{--bg1:#2c1722;--bg2:#1f0f18;--card:#3a2230;--ink:#f7dfe6;--plum:#f4a9c0;--soft:#4a2b3a;--sh:#00000055}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg2) linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--ink);font:500 16px/1.6 Nunito,system-ui,sans-serif;display:grid;place-items:center;padding:28px 18px;text-align:center}
+main{max-width:420px;width:100%}
+h1{margin:0;font:400 clamp(48px,14vw,64px)/1.05 "Great Vibes",cursive;color:var(--plum)}
+.sub{font:italic 500 17px "Playfair Display",serif;color:var(--plum);margin:6px 0 20px}
+.frame{background:#fff;border-radius:28px;padding:10px;box-shadow:0 16px 40px var(--sh)}
+.frame img{display:block;width:100%;height:auto;border-radius:20px}
+.tip{font-size:13px;margin:14px 0 22px;color:var(--plum)}
+label{display:block;font:700 12px Nunito,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:6px}
+input{width:100%;border:2px solid var(--rose);border-radius:14px;background:var(--soft);color:var(--ink);font:500 13px Nunito,sans-serif;padding:10px 12px;outline:0}
+button{margin-top:12px;background:var(--pink);color:#fff;border:0;border-radius:99px;padding:10px 28px;font:700 14px Nunito,sans-serif}
+#er{color:var(--plum);min-height:20px;font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Llave de corazón</h1>
+  <p class="sub">Escanéalo para entrar a tu carta 💗</p>
+  <div class="frame"><img id="qr" alt="Código QR en forma de corazón rosa"></div>
+  <p class="tip">Mantén presionada la imagen para guardarla, o hazle una captura.</p>
+  <label for="u">Enlace que abre el QR</label>
+  <input id="u" value="https://claude.ai/artifact/6juYEosoyAsX4z9FfzbgLc" autocomplete="off">
+  <button id="b">Actualizar QR</button>
+  <div id="er"></div>
+</main>
+<script>
+var $=function(i){return document.getElementById(i)};
+function rr(x,a,b,w,r){x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+w,r);x.arcTo(a+w,b+w,a,b+w,r);x.arcTo(a,b+w,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
+function draw(){
+  try{
+    var q=qrcode(0,"M");q.addData($("u").value.trim());q.make();
+    var n=q.getModuleCount(),c=document.createElement("canvas");c.width=c.height=1000;
+    var x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,1000,1000);
+    x.beginPath();
+    for(var t=0;t<=6.2832;t+=0.01){var X=16*Math.pow(Math.sin(t),3),Y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+      var px=500+28*X,py=500+28*(Y-2.54);t?x.lineTo(px,py):x.moveTo(px,py)}
+    x.closePath();
+    var g=x.createLinearGradient(0,60,0,940);g.addColorStop(0,"#ffe0e8");g.addColorStop(1,"#f9a3bd");
+    x.fillStyle=g;x.fill();x.lineWidth=16;x.strokeStyle="#ee739b";x.stroke();
+    var s=392,m=s/n,ox=304,oy=268;x.fillStyle="#a3234f";x.beginPath();
+    for(var r=0;r<n;r++)for(var k=0;k<n;k++)if(q.isDark(r,k))rr(x,ox+k*m,oy+r*m,m,m*.28);
+    x.fill();
+    $("qr").src=c.toDataURL("image/png");$("er").textContent="";
+  }catch(e){$("er").textContent="No pude generar el QR. Revisa el enlace e inténtalo otra vez."}
+}
+function boot(){$("b").onclick=draw;draw()}
+var s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js";
+s.onload=boot;
+s.onerror=function(){var f=document.createElement("script");f.src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js";f.onload=boot;document.head.appendChild(f)};
+document.head.appendChild(s);
+</script>
+</body>
+</html>
